@@ -4,12 +4,11 @@ import com.company.vacation.dto.VacationRequestDTO;
 import com.company.vacation.model.VacationRequest;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.List;
 
 @Path("/vacations")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,9 +22,23 @@ public class VacationResource {
         newVacation.employeeName = requestDTO.employeeName;
         newVacation.startDate = requestDTO.startDate;
         newVacation.endDate = requestDTO.endDate;
+        newVacation.status = "PENDING";
 
         newVacation.persist();
 
         return Response.status(Response.Status.CREATED).entity(newVacation).build();
+    }
+
+    @GET
+    public List<VacationRequest> getAllVacations() {
+        return  VacationRequest.listAll();
+    }
+
+    @GET
+    @Path("/{id}")
+    public Response getVacationById(@PathParam("id") Long id) {
+        return VacationRequest.findByIdOptional(id)
+                .map(vacation -> Response.ok(vacation).build())
+                .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 }
