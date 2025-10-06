@@ -1,0 +1,4 @@
+com\example\workflow\battle\PrepareToBattleDelegate.class
+com\example\workflow\invoice\ArchiveInvoiceDelegate.class
+com\example\workflow\invoice\PaymentSchedulerDelegate.class
+com\example\workflow\Application.class

@@ -29,11 +29,11 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isWin}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1rlqqeb" name="Нет" sourceRef="Gateway_125t44j" targetRef="Activity_1wv5ciz" />
-    <bpmn:userTask id="Activity_1n150x0" name="Праздновать победу" camunda:assignee="demo">
+    <bpmn:userTask id="Activity_1n150x0" name="Праздновать победу" camunda:assignee="supervisor">
       <bpmn:incoming>Flow_1b5fh5y</bpmn:incoming>
       <bpmn:outgoing>Flow_0vk6vt9</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Activity_1wv5ciz" name="Оплакивать поражение" camunda:assignee="demo">
+    <bpmn:userTask id="Activity_1wv5ciz" name="Оплакивать поражение" camunda:assignee="supervisor">
       <bpmn:incoming>Flow_1rlqqeb</bpmn:incoming>
       <bpmn:outgoing>Flow_11xvheg</bpmn:outgoing>
     </bpmn:userTask>
@@ -43,7 +43,7 @@
       <bpmn:outgoing>Flow_0gz55nc</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1ohqzht" camunda:errorCodeVariable="warriorsError" />
     </bpmn:boundaryEvent>
-    <bpmn:userTask id="Activity_10y88ud" name="Cкорректировать данные" camunda:assignee="demo">
+    <bpmn:userTask id="Activity_10y88ud" name="Cкорректировать данные" camunda:assignee="supervisor">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="warriors" label="Неверное число воинов! Введите корректное (1-100):" type="long" />
@@ -60,6 +60,9 @@
       <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="152" y="222" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12h78fh_di" bpmnElement="Event_12h78fh">
+        <dc:Bounds x="662" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0hlftth_di" bpmnElement="Activity_1aru2qq">
         <dc:Bounds x="250" y="200" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -69,9 +72,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="457" y="233" width="46" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12h78fh_di" bpmnElement="Event_12h78fh">
-        <dc:Bounds x="662" y="222" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0j57dn4_di" bpmnElement="Activity_1n150x0">
         <dc:Bounds x="480" y="80" width="100" height="80" />
