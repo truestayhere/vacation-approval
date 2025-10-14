@@ -27,7 +27,7 @@ public class VacationService {
     @Transactional
     public VacationRequest create(VacationRequestDTO requestDTO) {
         VacationRequest newVacation = new VacationRequest();
-        newVacation.uuid = UUID.randomUUID();
+
         newVacation.employeeName = requestDTO.employeeName;
         newVacation.startDate = requestDTO.startDate;
         newVacation.endDate = requestDTO.endDate;

@@ -1,0 +1,28 @@
+services:
+  database:
+    image: postgres:15
+    container_name: vacation-db-compose
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_JDBC_URL}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  app:
+    image: vacation-approval-app
+    container_name: vacation-app-compose
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+    environment:
+      - QUARKUS_DATASOURCE_JDBC_URL=${DB_JDBC_URL}
+      - QUARKUS_DATASOURCE_USERNAME=${DB_USERNAME}
+      - QUARKUS_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - QUARKUS_HIBERNATE_ORM_DATABASE_GENERATION=validate
+
+volumes:
+  db-data:
