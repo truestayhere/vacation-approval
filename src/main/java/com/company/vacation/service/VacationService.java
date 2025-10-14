@@ -28,6 +28,7 @@ public class VacationService {
     public VacationRequest create(VacationRequestDTO requestDTO) {
         VacationRequest newVacation = new VacationRequest();
 
+        newVacation.uuid = null;
         newVacation.employeeName = requestDTO.employeeName;
         newVacation.startDate = requestDTO.startDate;
         newVacation.endDate = requestDTO.endDate;
